@@ -1,0 +1,40 @@
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower);
+
+table
+{
+    -ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+    transform: rotate(7deg);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+} 
+
+
+td
+{
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  margin: 0px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 250%;
+}
+
+td#cell10, td#cell11, td#cell12
+{
+	border-top: 6px solid black;
+	border-bottom: 6px solid black;
+}
+
+td#cell01, td#cell11, td#cell21
+{
+	border-right: 6px solid black;
+	border-left: 6px solid black;
+}
+
+body
+{
+	background-image: url("../img/sheet.jpg");
+}
+

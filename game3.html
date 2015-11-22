@@ -1,0 +1,363 @@
+<html>
+<head>
+	<title>Tic-Tac-Toe</title>
+	<link rel = "stylesheet" type ="text/css" href="css/main.css">
+</head>
+
+<body>
+
+<div id = "displayBoard"></div>
+<div id = "yo"></div>
+
+	<script type = "text/javascript">
+		var yo = document.getElementById('yo');
+		var td;
+		var TicTacToe = function()
+		{
+			var board =
+			[
+				['','',''],
+				['','',''],
+				['','','']
+			];
+
+			this.toHTML = function()
+			{
+				var row = 0;
+				var col = 0;
+				spec = 0;
+
+				document.write ("<table>");
+				
+				for(row = 0; row < board.length; row++)
+				{
+					document.write("<tr>");
+
+					for(col = 0; col < board[row].length; col++)
+					{
+						document.write('<td id = "cell' + row + col + '">' + board[row][col] + '</td>');
+					}
+					
+					document.write("</tr>");
+				}		
+
+				document.write("</table>");
+				
+			}
+		}
+		
+			
+		var game = new TicTacToe();
+		game.toHTML();
+		
+		var winner = false;
+		var theWinner = "";
+		var gameOver = false;	
+		var num = 0;
+		var cpuTurn = 1;
+		var table = document.getElementsByTagName('table');
+		var letter = "X";
+		var yo = document.getElementById('yo');
+		var oletter = "O"
+		yo.innerHTML = "It's " + letter + "'s turn";
+		
+		/*
+		*/
+
+		var cell = [];
+
+		cell[0] = document.getElementById('cell00');
+		cell[1] = document.getElementById('cell01');
+		cell[2] = document.getElementById('cell02');
+		cell[3] = document.getElementById('cell10');		
+		cell[4] = document.getElementById('cell11');		
+		cell[5] = document.getElementById('cell12');		
+		cell[6] = document.getElementById('cell20');		
+		cell[7] = document.getElementById('cell21');		
+		cell[8] = document.getElementById('cell22');				
+
+
+		var displayWinner = function()
+		{
+			console.log( "The Winner is " + theWinner );
+			winner = true;
+		}
+
+		var randomMove = function()
+		{
+			if(gameOver === false)
+			{
+				do
+				{	
+					var cpuMove = Math.floor(Math.random() * 8 );
+					console.log(cpuMove);
+				}
+				while( cell[cpuMove].innerHTML != "" );
+					cell[cpuMove].innerHTML = "O";
+				console.log("Random Move");
+			}
+			else
+				return false;
+		}
+
+		var decide = function()
+		{
+		//offensive
+			//top row
+			if(cell[0].innerHTML === "O" && cell[1].innerHTML === "O" && cell[2].innerHTML === "")
+				cell[2].innerHTML = "O";
+			else if (cell[0].innerHTML === "O" && cell[2].innerHTML === "O" && cell[1].innerHTML === "")
+				cell[1].innerHTML = "O";
+			else if (cell[1].innerHTML ==="O" && cell[2].innerHTML === "O" && cell[0].innerHTML === "")
+				cell[0].innerHTML = "O";
+			//middle row
+			else  if (cell[3].innerHTML ==="O" && cell[4].innerHTML === "O" && cell[5].innerHTML === "")
+				cell[5].innerHTML = "O";
+			 else if (cell[4].innerHTML ==="O" && cell[5].innerHTML === "O" && cell[3].innerHTML === "" )
+				cell[3].innerHTML = "O";
+			else if (cell[3].innerHTML ==="O" && cell[5].innerHTML === "O" && cell[4].innerHTML === "")
+				cell[4].innerHTML = "O";
+			//bottom row
+			 else if (cell[6].innerHTML ==="O" && cell[7].innerHTML === "O" && cell[8].innerHTML === "")
+				cell[8].innerHTML = "O";
+			 else if (cell[7].innerHTML ==="O" && cell[8].innerHTML === "O" && cell[6].innerHTML === "")
+				cell[6] = "O";
+			 else if (cell[6].innerHTML === "O" && cell[8].innerHTML === "O" && cell[7].innerHTML === "")
+				cell[7].innerHTML = "O";
+			//left column
+			 else if (cell[0].innerHTML === "O" && cell[3].innerHTML === "O" && cell[6].innerHTML === "")
+				cell[6].innerHTML = "O";
+			 else if (cell[0].innerHTML === "O" && cell[6].innerHTML === "O" && cell[3].innerHTML == "")
+				cell[3].innerHTML = "O";
+			 else if (cell[3].innerHTML === "O" && cell[6].innerHTML === "O" && cell[0].innerHTML === "")
+				cell[0] = "O";
+			//middle columnn
+			 else if (cell[1].innerHTML ==="O" && cell[4].innerHTML === "O" && cell[4].innerHTML === "")
+				cell[4].innerHTML = "O";
+			 else if (cell[4].innerHTML ==="O" && cell[7].innerHTML === "O" && cell[1].innerHTML === "")
+				cell[1].innerHTML = "O";
+			 else if (cell[1].innerHTML ==="O" && cell[7].innerHTML === "O" && cell[4].innerHTML === "")
+				cell[4].innerHTML = "O";
+			//right colum
+			 else if (cell[5].innerHTML ==="O" && cell[8].innerHTML === "O" && cell[2].innerHTML === "")
+				cell[2].innerHTML = "O";
+			 else if (cell[2].innerHTML ==="O" && cell[5].innerHTML === "O" && cell[8].innerHTML === "")
+				cell[8].innerHTML = "O";
+			 else if (cell[2].innerHTML ==="O" && cell[8].innerHTML === "O" && cell[5].innerHTML === "")
+				cell[5].innerHTML = "O";
+			//left to right diagnol
+			 else if (cell[0].innerHTML ==="O" && cell[4].innerHTML === "O" && cell[8].innerHTML === "")
+				cell[8].innerHTML = "O";
+			 else if (cell[4].innerHTML ==="O" && cell[8].innerHTML === "O" && cell[0].innerHTML === "")
+				cell[0].innerHTML = "O";
+			 else if (cell[0].innerHTML ==="O" && cell[8].innerHTML === "O" && cell[4].innerHTML === "")
+				cell[4] = "O";
+			//right to left diaganol
+
+			 else if (cell[2].innerHTML ==="O" && cell[6].innerHTML === "O" && cell[4].innerHTML === "")
+				cell[4].HTML = "O";
+			 else if (cell[2].innerHTML ==="O" && cell[4].innerHTML === "O" && cell[6].innerHTML === "")
+				cell[6].HTML = "O";
+			 else if (cell[4].innerHTML ==="O" && cell[6].innerHTML === "O" && cell[2].innerHTML === "")
+				cell[2].innerHTML = "O";
+		//defensive
+			//top row
+			 else if(cell[0].innerHTML === "X" && cell[1].innerHTML === "X" && cell[2].innerHTML === "")
+				cell[2].innerHTML = "O";
+			 else if (cell[0].innerHTML === "X" && cell[2].innerHTML === "X" && cell[1].innerHTML === "")
+				cell[1].innerHTML = "O";
+			 else if (cell[1].innerHTML ==="X" && cell[2].innerHTML === "X" && cell[0].innerHTML === "")
+				cell[0] = "O";
+			//middle row
+			 else if (cell[3].innerHTML ==="X" && cell[4].innerHTML === "X" && cell[5].innerHTML === "")
+				cell[5].innerHTML = "O";
+			 else if (cell[4].innerHTML ==="X" && cell[5].innerHTML === "X" && cell[3].innerHTML === "")
+				cell[3].innerHTML = "O";
+			 else if (cell[3].innerHTML ==="X" && cell[5].innerHTML === "X" && cell[3].innerHTML === "")
+				cell[4].innerHTML = "O";
+			//bottom row
+			 else if (cell[6].innerHTML ==="X" && cell[7].innerHTML === "X" && cell[8].innerHTML === "")
+				cell[8].innerHTML = "O";
+			 else if (cell[7].innerHTML ==="X" && cell[8].innerHTML === "X" && cell[6].innerHTML === "")
+				cell[6].innerHTML = "O";
+			 else if (cell[6].innerHTML ==="X" && cell[8].innerHTML === "X" && cell[7].innerHTML === "")
+				cell[7].innerHTML = "O";
+			//left column
+			 else if (cell[0].innerHTML ==="X" && cell[3].innerHTML === "X" && cell[6].innerHTML === "")
+				cell[6].innerHTML = "O";
+			 else if (cell[0].innerHTML ==="X" && cell[6].innerHTML === "X" && cell[3].innerHTML === "")
+				cell[3].innerHTML = "O";
+			 else if (cell[3].innerHTML ==="X" && cell[6].innerHTML === "X" && cell[0].innerHTML === "")
+				cell[0].innerHTML = "O";
+			//middle columnn
+			 else if (cell[1].innerHTML ==="X" && cell[4].innerHTML === "X" && cell[4].innerHTML === "")
+				cell[4].innerHTML = "O";
+			 else if (cell[4].innerHTML ==="X" && cell[7].innerHTML === "X" && cell[1].innerHTML === "")
+				cell[1].innerHTML = "O";
+			 else if (cell[1].innerHTML ==="X" && cell[7].innerHTML === "X" && cell[4].innerHTML === "")
+				cell[4].innerHTML = "O";
+			//right colum
+			 else if (cell[5].innerHTML ==="X" && cell[8].innerHTML === "X" && cell[2].innerHTML === "")
+				cell[2].innerHTML = "O";
+			 else if (cell[2].innerHTML ==="X" && cell[5].innerHTML === "X" && cell[8].innerHTML === "")
+				cell[8].innerHTML = "O";
+			 else if (cell[2].innerHTML ==="X" && cell[8].innerHTML === "X" && cell[5].innerHTML === "")
+				cell[5].innerHTML = "O";
+			//left to right diagnol
+			 else if (cell[0].innerHTML ==="X" && cell[4].innerHTML === "X" && cell[8].innerHTML === "")
+				cell[8].innerHTML = "O";
+			 else if (cell[4].innerHTML ==="X" && cell[8].innerHTML === "X" && cell[0].innerHTML === "")
+				cell[0].innerHTML = "O";
+			 else if (cell[0].innerHTML ==="X" && cell[8].innerHTML === "X" && cell[4].innerHTML === "")
+				cell[4].innerHTML = "O";
+			//right to left diaganol
+
+			 else if (cell[2].innerHTML ==="X" && cell[6].innerHTML === "X" && cell[4].innerHTML === "")
+				cell[4].innerHTML = "O";
+			 else if (cell[2].innerHTML ==="X" && cell[4].innerHTML === "X" && cell[2].innerHTML === "")
+				cell[6].innerHTML = "O";
+			 else if (cell[4].innerHTML ==="X" && cell[6].innerHTML === "X" && cell[2].innerHMTL === "")
+				cell[2].innerHTML = "O";
+			//random play
+			else
+				randomMove();
+
+		}
+	
+
+		var compPlay = function()
+		{
+			if(winner === false )
+			{
+				decide();
+				change();
+			}
+			else 
+				return false;
+		}
+
+		var change = function()
+		{
+			yo.innerHTML = "It's " + oletter + "'s turn";
+				
+			if(letter === "X")
+			{
+				letter = "O";
+				oletter = "X";
+			}
+			else
+			{
+				letter = "X"
+				oletter = "O"
+			}
+			num ++
+		}
+
+
+		var win = function()
+		{
+			if(cell[0].innerHTML === cell[1].innerHTML && cell[0].innerHTML === cell[2].innerHTML && cell[1].innerHTML != "")
+			{
+				theWinner = cell[0].innerHTML;
+				displayWinner();
+				return false;
+			}
+			else if (cell[0].innerHTML === cell[3].innerHTML && cell[0].innerHTML === cell[6].innerHTML && cell[0].innerHTML != "")
+			{
+				theWinner = cell[0].innerHTML;
+				displayWinner();
+				return false;
+			}
+			else if (cell[0].innerHTML === cell[4].innerHTML && cell[0].innerHTML === cell[8].innerHTML && cell[0].innerHTML != "")
+			{
+				theWinner = cell[0].innerHTML;
+				displayWinner();
+				return false;
+			}
+			else if (cell[1].innerHTML === cell[4].innerHTML && cell[1].innerHTML === cell[7].innerHTML && cell[1].innerHTML != "")
+			{
+				theWinner = cell[1].innerHTML;
+				displayWinner();
+				return false;
+			}
+			else if (cell[3].innerHTML === cell[4].innerHTML && cell[3].innerHTML === cell[5].innerHTML && cell[3].innerHTML != "")
+			{
+				theWinner = cell[3].innerHTML;
+				displayWinner();
+				return false;
+			}
+			else if (cell[6].innerHTML === cell[4].innerHTML && cell[6].innerHTML === cell[2].innerHTML && cell[2].innerHTML != "")
+			{
+				theWinner = cell[6].innerHTML;
+				displayWinner();
+				return false;
+			}
+			else if (cell[6].innerHTML === cell[7].innerHTML && cell[6].innerHTML === cell[8].innerHTML && cell[6].innerHTML != "")
+			{
+				theWinner = cell[6].innerHTML;
+				displayWinner();
+				return false;
+			}
+			else if (cell[2].innerHTML === cell[5].innerHTML && cell[2].innerHTML === cell[8].innerHTML && cell[2].innerHTML != "")
+			{
+				theWinner = cell[2].innerHTML;
+				displayWinner();
+				return false;
+			}
+
+
+		}		
+
+
+		var play = function()
+		{
+			if (winner === false)	
+			{	
+				if( num < 9 )
+				{
+					if (this.innerHTML != "")
+					{
+						alert('pick a new cell');
+						return false;	
+					}
+					else
+					{
+						this.innerHTML = letter;
+						change();
+						win();
+					}
+				}
+			}
+			else
+				console.log("the game is over");
+
+			if (num === 9 )
+			{
+				alert("CAT'S GAME!")
+				gameOver = true;
+			}
+			if (winner === false)
+			{
+				compPlay();
+				win();
+			}
+		}
+
+		
+			
+		cell[0].onclick = play; 
+		cell[1].onclick = play; 
+		cell[2].onclick = play; 
+		cell[3].onclick = play; 
+		cell[4].onclick = play; 
+		cell[5].onclick = play; 
+		cell[6].onclick = play; 
+		cell[7].onclick = play; 
+		cell[8].onclick = play; 
+
+
+
+	</script>
+</body>
+</html>
+

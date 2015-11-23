@@ -103,37 +103,38 @@
 		var decide = function()
 		{
 		//offensive
+		
 			//top row
-			if(cell[0].innerHTML === "O" && cell[1].innerHTML === "O" && cell[2].innerHTML === "")
+			 if(cell[0].innerHTML === "O" && cell[1].innerHTML === "O" && cell[2].innerHTML === "")
 				cell[2].innerHTML = "O";
-			else if (cell[0].innerHTML === "O" && cell[2].innerHTML === "O" && cell[1].innerHTML === "")
+			 else if (cell[0].innerHTML === "O" && cell[2].innerHTML === "O" && cell[1].innerHTML === "")
 				cell[1].innerHTML = "O";
-			else if (cell[1].innerHTML ==="O" && cell[2].innerHTML === "O" && cell[0].innerHTML === "")
+			 else if (cell[1].innerHTML ==="O" && cell[2].innerHTML === "O" && cell[0].innerHTML === "")
 				cell[0].innerHTML = "O";
 			//middle row
-			else  if (cell[3].innerHTML ==="O" && cell[4].innerHTML === "O" && cell[5].innerHTML === "")
+			 else if (cell[3].innerHTML ==="O" && cell[4].innerHTML === "O" && cell[5].innerHTML === "")
 				cell[5].innerHTML = "O";
-			 else if (cell[4].innerHTML ==="O" && cell[5].innerHTML === "O" && cell[3].innerHTML === "" )
+			 else if (cell[4].innerHTML ==="O" && cell[5].innerHTML === "O" && cell[3].innerHTML === "")
 				cell[3].innerHTML = "O";
-			else if (cell[3].innerHTML ==="O" && cell[5].innerHTML === "O" && cell[4].innerHTML === "")
+			 else if (cell[3].innerHTML ==="O" && cell[5].innerHTML === "O" && cell[4].innerHTML === "")
 				cell[4].innerHTML = "O";
 			//bottom row
 			 else if (cell[6].innerHTML ==="O" && cell[7].innerHTML === "O" && cell[8].innerHTML === "")
 				cell[8].innerHTML = "O";
 			 else if (cell[7].innerHTML ==="O" && cell[8].innerHTML === "O" && cell[6].innerHTML === "")
-				cell[6] = "O";
-			 else if (cell[6].innerHTML === "O" && cell[8].innerHTML === "O" && cell[7].innerHTML === "")
+				cell[6].innerHTML = "O";
+			 else if (cell[6].innerHTML ==="O" && cell[8].innerHTML === "O" && cell[7].innerHTML === "")
 				cell[7].innerHTML = "O";
 			//left column
-			 else if (cell[0].innerHTML === "O" && cell[3].innerHTML === "O" && cell[6].innerHTML === "")
+			 else if (cell[0].innerHTML ==="O" && cell[3].innerHTML === "O" && cell[6].innerHTML === "")
 				cell[6].innerHTML = "O";
-			 else if (cell[0].innerHTML === "O" && cell[6].innerHTML === "O" && cell[3].innerHTML == "")
+			 else if (cell[0].innerHTML ==="O" && cell[6].innerHTML === "O" && cell[3].innerHTML === "")
 				cell[3].innerHTML = "O";
-			 else if (cell[3].innerHTML === "O" && cell[6].innerHTML === "O" && cell[0].innerHTML === "")
-				cell[0] = "O";
+			 else if (cell[3].innerHTML ==="O" && cell[6].innerHTML === "O" && cell[0].innerHTML === "")
+				cell[0].innerHTML = "O";
 			//middle columnn
 			 else if (cell[1].innerHTML ==="O" && cell[4].innerHTML === "O" && cell[4].innerHTML === "")
-				cell[4].innerHTML = "O";
+				cell[7].innerHTML = "O";
 			 else if (cell[4].innerHTML ==="O" && cell[7].innerHTML === "O" && cell[1].innerHTML === "")
 				cell[1].innerHTML = "O";
 			 else if (cell[1].innerHTML ==="O" && cell[7].innerHTML === "O" && cell[4].innerHTML === "")
@@ -151,15 +152,16 @@
 			 else if (cell[4].innerHTML ==="O" && cell[8].innerHTML === "O" && cell[0].innerHTML === "")
 				cell[0].innerHTML = "O";
 			 else if (cell[0].innerHTML ==="O" && cell[8].innerHTML === "O" && cell[4].innerHTML === "")
-				cell[4] = "O";
+				cell[4].innerHTML = "O";
 			//right to left diaganol
 
 			 else if (cell[2].innerHTML ==="O" && cell[6].innerHTML === "O" && cell[4].innerHTML === "")
-				cell[4].HTML = "O";
+				cell[4].innerHTML = "O";
 			 else if (cell[2].innerHTML ==="O" && cell[4].innerHTML === "O" && cell[6].innerHTML === "")
-				cell[6].HTML = "O";
+				cell[6].innerHTML = "O";
 			 else if (cell[4].innerHTML ==="O" && cell[6].innerHTML === "O" && cell[2].innerHTML === "")
 				cell[2].innerHTML = "O";
+
 		//defensive
 			//top row
 			 else if(cell[0].innerHTML === "X" && cell[1].innerHTML === "X" && cell[2].innerHTML === "")
@@ -216,7 +218,7 @@
 				cell[4].innerHTML = "O";
 			 else if (cell[2].innerHTML ==="X" && cell[4].innerHTML === "X" && cell[6].innerHTML === "")
 				cell[6].innerHTML = "O";
-			 else if (cell[4].innerHTML ==="X" && cell[6].innerHTML === "X" && cell[2].innerHMTL === "")
+			 else if (cell[4].innerHTML ==="X" && cell[6].innerHTML === "X" && cell[2].innerHTML === "")
 				cell[2].innerHTML = "O";
 			//random play
 			else
